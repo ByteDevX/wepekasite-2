@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use App\Models\QRLink;
+use App\Models\QrLink;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class QrLinkController extends Controller
@@ -82,7 +82,7 @@ class QrLinkController extends Controller
 
     public function redirect($slug)
 {
-    $link = QRLink::where('slug', $slug)->firstOrFail();
+    $link = QrLink::where('slug', $slug)->firstOrFail();
 
     if ($link->file_type === 'link') {
         // Redirect ke link luar (misalnya Google Form, dll)

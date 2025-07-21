@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\QRLink;
+use App\Models\QrLink;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -50,7 +50,7 @@ class QrLinkController extends Controller
 
         $qrData = route('client.qr.redirect', ['slug' => $slug]); // Link tujuan via slug
 
-        QRLink::create([
+        QrLink::create([
             'user_id' => $user->id,
             'event_name' => $validated['event_name'],
             'file_type' => $validated['file_type'],
