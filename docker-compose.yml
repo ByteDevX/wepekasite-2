@@ -22,32 +22,32 @@ services:
 #            GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
 #            GOOGLE_REDIRECT_URI: ${GOOGLE_REDIRECT_URI}
         volumes:
-            - drive_wepekasite:/var/www/
+            - drive_wepekasite-2:/var/www/
         networks:
-            - wepeka_site-net
+            - wepeka_site-net-2
         expose:
             - "9000"
 
 
-    ukmpe-web:
+    wepeka-web:
         build: ./nginx
         depends_on:
             - wepeka-site
         restart: always
         container_name: wepeka-web
         volumes:
-            - drive_wepekasite:/var/www/
+            - drive_wepekasite-2:/var/www/
         expose:
             - "80"                              # HTTP for NPM
 
         networks:
-            - wepeka_site-net                           # to reach sce:9000
+            - wepeka_site-net-2                           # to reach sce:9000
             - link0                             # external network NPM uses
 
 volumes:
-    drive_wepekasite:
+    drive_wepekasite-2:
 
 networks:
-    wepeka_site-net:
+    wepeka_site-net-2:
     link0:
         external: true
