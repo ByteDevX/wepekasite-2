@@ -1,10 +1,10 @@
 services:
-    wepeka-site:
+    wepeka-site-2:
         build:
             context: .
             dockerfile: Dockerfile
         restart: always
-        container_name: wepeka-site
+        container_name: wepeka-site-2
         environment:
             APP_ENV:           ${APP_ENV:-production}
             APP_DEBUG:         "true"
@@ -29,12 +29,12 @@ services:
             - "9000"
 
 
-    wepeka-web:
+    wepeka-web-2:
         build: ./nginx
         depends_on:
-            - wepeka-site
+            - wepeka-site-2
         restart: always
-        container_name: wepeka-web
+        container_name: wepeka-web-2
         volumes:
             - drive_wepekasite-2:/var/www/
         expose:
